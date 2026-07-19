@@ -185,11 +185,9 @@ portfolioTitle.addEventListener('click', () => {
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
+   (entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // animate once, then stop watching
+      entry.target.classList.toggle('visible', entry.isIntersecting);
       }
     });
   },
