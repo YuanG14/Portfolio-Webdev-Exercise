@@ -17,7 +17,7 @@
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease !important; 
 }
 
 .reveal.visible {
@@ -36,7 +36,7 @@
    layered on top of Tailwind's shadow transition.
    ============================== */
 .portfolio-card {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease !important;
 }
 
 .portfolio-card:hover {
@@ -49,7 +49,7 @@
    on click for tactile feedback.
    ============================== */
 .btn-interactive {
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease !important;
 }
 
 .btn-interactive:hover {
