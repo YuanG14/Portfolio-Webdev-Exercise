@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
+  <meta name="description" content="Portfolio site showcasing full-stack development projects.">
 
   <!-- Tailwind CSS (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -70,7 +71,7 @@
   <!-- ============================= -->
   <main id="mainContent" class="pt-16">
 
- <!-- ============================= -->
+    <!-- ============================= -->
     <!-- HERO SECTION                  -->
     <!-- ============================= -->
     <section id="home" class="min-h-[90vh] flex items-center bg-gradient-to-b from-indigo-50 to-white">
@@ -84,7 +85,7 @@
 
           <!-- Name / Title -->
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight">
-            Yuan Benedict A. Chavez
+            Your Name
           </h1>
 
           <!-- Tagline -->
@@ -116,7 +117,7 @@
 
         <!-- Section Heading -->
         <div class="text-center mb-12">
-          <h2 id="portfolioTitle" class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 cursor-pointer select-none" title="Click me!">My Portfolio</h2>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">My Portfolio</h2>
           <p class="text-gray-600 max-w-xl mx-auto">
             A selection of projects showcasing my skills across design and development.
           </p>
@@ -127,9 +128,9 @@
 
           <!-- Card 1 -->
           <article class="reveal portfolio-card bg-gray-50 rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
-            <img src="https://placehold.co/600x400?text=Project+1" alt="Project One thumbnail" class="w-full h-48 object-cover">
+            <img src="https://placehold.co/600x400?text=Project+1" alt="Project One thumbnail" class="w-full h-48 object-cover" loading="lazy">
             <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Project One</h3>
+              <h3 class="project-title text-xl font-semibold text-gray-900 mb-2 cursor-pointer select-none" title="Click me!">Project One</h3>
               <p class="text-gray-600 text-sm mb-4 flex-grow">
                 A short description of what this project does and the problem it solves.
               </p>
@@ -142,9 +143,9 @@
 
           <!-- Card 2 -->
           <article class="reveal portfolio-card bg-gray-50 rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
-            <img src="https://placehold.co/600x400?text=Project+2" alt="Project Two thumbnail" class="w-full h-48 object-cover">
+            <img src="https://placehold.co/600x400?text=Project+2" alt="Project Two thumbnail" class="w-full h-48 object-cover" loading="lazy">
             <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Project Two</h3>
+              <h3 class="project-title text-xl font-semibold text-gray-900 mb-2 cursor-pointer select-none" title="Click me!">Project Two</h3>
               <p class="text-gray-600 text-sm mb-4 flex-grow">
                 A short description of what this project does and the problem it solves.
               </p>
@@ -157,9 +158,9 @@
 
           <!-- Card 3 -->
           <article class="reveal portfolio-card bg-gray-50 rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
-            <img src="https://placehold.co/600x400?text=Project+3" alt="Project Three thumbnail" class="w-full h-48 object-cover">
+            <img src="https://placehold.co/600x400?text=Project+3" alt="Project Three thumbnail" class="w-full h-48 object-cover" loading="lazy">
             <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Project Three</h3>
+              <h3 class="project-title text-xl font-semibold text-gray-900 mb-2 cursor-pointer select-none" title="Click me!">Project Three</h3>
               <p class="text-gray-600 text-sm mb-4 flex-grow">
                 A short description of what this project does and the problem it solves.
               </p>
@@ -174,7 +175,6 @@
       </div>
     </section>
 
-    
     <!-- ============================= -->
     <!-- CONTACT SECTION               -->
     <!-- ============================= -->
@@ -216,7 +216,7 @@
                       placeholder="Your message..."></textarea>
           </div>
 
-          <!-- Alert placeholder (populated by JS in Phase 7) -->
+          <!-- Alert placeholder (populated by JS in Phase 7); aria-live announces updates to screen readers -->
           <div id="formAlert" class="hidden text-sm rounded-lg px-4 py-3" role="alert" aria-live="polite"></div>
 
           <!-- Submit Button -->
@@ -225,21 +225,21 @@
             Send Message
           </button>
 
-    <!-- Sections (Hero, Portfolio, Contact, etc.) will be added in later phases -->
+        </form>
+      </div>
+    </section>
   </main>
 
-   <!-- ============================= -->
+  <!-- ============================= -->
   <!-- PROJECT MODALS                -->
   <!-- Hidden by default. JS toggle  -->
   <!-- logic added in Phase 5.       -->
   <!-- ============================= -->
 
   <!-- Modal 1: Project One -->
- <div id="modal-1" class="project-modal hidden fixed inset-0 z-50 items-center justify-center p-4"
+  <div id="modal-1" class="project-modal hidden fixed inset-0 z-50 items-center justify-center p-4"
        role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-       
-       
-      <!-- Backdrop -->
+    <!-- Backdrop -->
     <div class="modal-backdrop absolute inset-0 bg-black/50"></div>
 
     <!-- Modal Content -->
@@ -251,10 +251,10 @@
         </svg>
       </button>
 
-      <img src="https://placehold.co/800x450?text=Project+1" alt="Project One preview" class="w-full h-56 object-cover rounded-t-xl">
+      <img src="https://placehold.co/800x450?text=Project+1" alt="Project One preview" class="w-full h-56 object-cover rounded-t-xl" loading="lazy">
 
       <div class="p-6">
-        <h3 class="text-2xl font-bold text-gray-900 mb-2">Project One</h3>
+        <h3 id="modal-1-title" class="text-2xl font-bold text-gray-900 mb-2">Project One</h3>
         <p class="text-gray-600 mb-4">
           A detailed explanation of Project One: the problem it solves, the tech stack used,
           and the role played in building it.
@@ -272,7 +272,7 @@
   </div>
 
   <!-- Modal 2: Project Two -->
-   <div id="modal-2" class="project-modal hidden fixed inset-0 z-50 items-center justify-center p-4"
+  <div id="modal-2" class="project-modal hidden fixed inset-0 z-50 items-center justify-center p-4"
        role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
     <div class="modal-backdrop absolute inset-0 bg-black/50"></div>
 
@@ -283,10 +283,10 @@
         </svg>
       </button>
 
-      <img src="https://placehold.co/800x450?text=Project+2" alt="Project Two preview" class="w-full h-56 object-cover rounded-t-xl">
+      <img src="https://placehold.co/800x450?text=Project+2" alt="Project Two preview" class="w-full h-56 object-cover rounded-t-xl" loading="lazy">
 
       <div class="p-6">
-        <h3 class="text-2xl font-bold text-gray-900 mb-2">Project Two</h3>
+        <h3 id="modal-2-title" class="text-2xl font-bold text-gray-900 mb-2">Project Two</h3>
         <p class="text-gray-600 mb-4">
           A detailed explanation of Project Two: the problem it solves, the tech stack used,
           and the role played in building it.
@@ -308,7 +308,6 @@
        role="dialog" aria-modal="true" aria-labelledby="modal-3-title">
     <div class="modal-backdrop absolute inset-0 bg-black/50"></div>
 
-
     <div class="relative bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
       <button type="button" class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus-visible:ring-2 focus-visible:ring-indigo-500 rounded" aria-label="Close modal">
         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -316,10 +315,10 @@
         </svg>
       </button>
 
-      <img src="https://placehold.co/800x450?text=Project+3" alt="Project Three preview" class="w-full h-56 object-cover rounded-t-xl">
+      <img src="https://placehold.co/800x450?text=Project+3" alt="Project Three preview" class="w-full h-56 object-cover rounded-t-xl" loading="lazy">
 
       <div class="p-6">
-        <h3 class="text-2xl font-bold text-gray-900 mb-2">Project Three</h3>
+        <h3 id="modal-3-title" class="text-2xl font-bold text-gray-900 mb-2">Project Three</h3>
         <p class="text-gray-600 mb-4">
           A detailed explanation of Project Three: the problem it solves, the tech stack used,
           and the role played in building it.
@@ -335,7 +334,6 @@
       </div>
     </div>
   </div>
-
 
   <!-- Custom JavaScript -->
   <script src="js/main.js"></script>

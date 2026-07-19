@@ -206,7 +206,7 @@ contactForm.addEventListener('submit', (e) => {
 // Portfolio Title Click - Background Color Cycle
 // ==============================
 
-const portfolioTitle = document.getElementById('portfolioTitle');
+const projectTitles = document.querySelectorAll('.project-title');
 const portfolioSection = document.getElementById('portfolio');
 
 // Pool of Tailwind background classes to cycle through on click
@@ -220,7 +220,8 @@ const PORTFOLIO_BG_COLORS = [
 
 let portfolioBgIndex = 0; // tracks current color position in the array
 
-portfolioTitle.addEventListener('click', () => {
+// Cycles the portfolio section's background to the next color in the pool
+function cyclePortfolioBg() {
   // Remove the current background color class
   portfolioSection.classList.remove(PORTFOLIO_BG_COLORS[portfolioBgIndex]);
 
@@ -229,6 +230,11 @@ portfolioTitle.addEventListener('click', () => {
 
   // Apply the new background color class
   portfolioSection.classList.add(PORTFOLIO_BG_COLORS[portfolioBgIndex]);
+}
+
+// Any project title (Project One, Project Two, Project Three) triggers the color cycle
+projectTitles.forEach((title) => {
+  title.addEventListener('click', cyclePortfolioBg);
 });
 
 
