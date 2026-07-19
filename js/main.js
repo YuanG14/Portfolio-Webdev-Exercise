@@ -33,34 +33,86 @@ navToggleBtn.addEventListener('click', () => {
 const projectCardBtns = document.querySelectorAll('.project-card-btn');
 const projectModals = document.querySelectorAll('.project-modal');
 
+// Tracks the element that had focus before a modal was opened,
+// so we can return focus to it when the modal closes (accessibility).
+let lastFocusedElement = null;
+
+/**
+ * Returns the focusable elements within a container (used for the Tab focus trap)
+ * @param {HTMLElement} container
+ * @returns {HTMLElement[]}
+ */
+function getFocusableElements(container) {
+  return Array.from(
+    container.querySelectorAll('a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])')
+  );
+}
+
 /**
  * Opens a modal by its project id (matches data-project -> #modal-{id})
  * @param {string} projectId
+ * @param {HTMLElement} triggerEl - the button that triggered the open, for focus return
  */
-function openModal(projectId) {
+function openModal(projectId, triggerEl) {
   const modal = document.getElementById(`modal-${projectId}`);
   if (!modal) return;
+
+  lastFocusedElement = triggerEl || document.activeElement;
 
   modal.classList.remove('hidden');
   modal.classList.add('flex'); // switch to flex so items-center/justify-center apply
   document.body.classList.add('overflow-hidden'); // prevent background scroll
+
+  // Move focus to the modal's close button so keyboard/screen reader
+  // users land inside the dialog immediately
+  const closeBtn = modal.querySelector('.modal-close-btn');
+  if (closeBtn) closeBtn.focus();
 }
 
 /**
- * Closes a specific modal element
+ * Closes a specific modal element and returns focus to the trigger
  * @param {HTMLElement} modal
  */
 function closeModal(modal) {
   modal.classList.add('hidden');
   modal.classList.remove('flex');
   document.body.classList.remove('overflow-hidden');
+
+  // Return focus to whatever opened the modal
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+    lastFocusedElement = null;
+  }
+}
+
+/**
+ * Traps Tab/Shift+Tab focus within the currently open modal
+ * @param {KeyboardEvent} e
+ * @param {HTMLElement} modal
+ */
+function trapFocus(e, modal) {
+  if (e.key !== 'Tab') return;
+
+  const focusable = getFocusableElements(modal);
+  if (focusable.length === 0) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 }
 
 // Open modal when a "View Details" button is clicked
 projectCardBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     const projectId = btn.getAttribute('data-project');
-    openModal(projectId);
+    openModal(projectId, btn);
   });
 });
 
@@ -71,6 +123,9 @@ projectModals.forEach((modal) => {
 
   closeBtn.addEventListener('click', () => closeModal(modal));
   backdrop.addEventListener('click', () => closeModal(modal));
+
+  // Keep Tab navigation trapped inside this modal while it's open
+  modal.addEventListener('keydown', (e) => trapFocus(e, modal));
 });
 
 // Close any open modal when Escape key is pressed
@@ -175,6 +230,7 @@ portfolioTitle.addEventListener('click', () => {
   portfolioSection.classList.add(PORTFOLIO_BG_COLORS[portfolioBgIndex]);
 });
 
+
 // ==============================
 // Scroll Reveal Animation
 // Uses IntersectionObserver to add
@@ -185,7 +241,7 @@ portfolioTitle.addEventListener('click', () => {
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver(
-    (entries) => {
+  (entries) => {
     entries.forEach((entry) => {
       // Toggle 'visible' on/off based on whether the element is currently
       // in the viewport, so the animation replays each time it scrolls into view.
