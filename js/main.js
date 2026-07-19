@@ -174,3 +174,26 @@ portfolioTitle.addEventListener('click', () => {
   // Apply the new background color class
   portfolioSection.classList.add(PORTFOLIO_BG_COLORS[portfolioBgIndex]);
 });
+
+// ==============================
+// Scroll Reveal Animation
+// Uses IntersectionObserver to add
+// .visible to .reveal elements once
+// they enter the viewport.
+// ==============================
+
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // animate once, then stop watching
+      }
+    });
+  },
+  { threshold: 0.15 } // trigger when ~15% of the element is visible
+);
+
+revealElements.forEach((el) => revealObserver.observe(el));
