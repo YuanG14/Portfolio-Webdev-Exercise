@@ -185,10 +185,11 @@ portfolioTitle.addEventListener('click', () => {
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver(
-   (entries) => {
+    (entries) => {
     entries.forEach((entry) => {
+      // Toggle 'visible' on/off based on whether the element is currently
+      // in the viewport, so the animation replays each time it scrolls into view.
       entry.target.classList.toggle('visible', entry.isIntersecting);
-      }
     });
   },
   { threshold: 0.15 } // trigger when ~15% of the element is visible
