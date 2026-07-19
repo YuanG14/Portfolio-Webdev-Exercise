@@ -156,10 +156,10 @@ const portfolioSection = document.getElementById('portfolio');
 // Pool of Tailwind background classes to cycle through on click
 const PORTFOLIO_BG_COLORS = [
   'bg-white',
-  'bg-indigo-50',
-  'bg-amber-50',
-  'bg-emerald-50',
-  'bg-rose-50',
+  'bg-indigo-300',
+  'bg-amber-300',
+  'bg-emerald-300',
+  'bg-rose-300',
 ];
 
 let portfolioBgIndex = 0; // tracks current color position in the array
