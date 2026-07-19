@@ -82,3 +82,64 @@ document.addEventListener('keydown', (e) => {
     });
   }
 });
+
+// ==============================
+// Contact Form Validation
+// ==============================
+
+const contactForm = document.getElementById('contactForm');
+const formAlert = document.getElementById('formAlert');
+
+// Simple, standard-enough email pattern for client-side checks
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/**
+ * Displays a message in the form alert box.
+ * @param {string} message - Text to display
+ * @param {'error'|'success'} type - Determines the alert's color styling
+ */
+function showFormAlert(message, type) {
+  formAlert.textContent = message;
+  formAlert.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+
+  if (type === 'error') {
+    formAlert.classList.add('bg-red-100', 'text-red-700');
+  } else {
+    formAlert.classList.add('bg-green-100', 'text-green-700');
+  }
+}
+
+/** Hides the form alert box and resets its styling */
+function hideFormAlert() {
+  formAlert.classList.add('hidden');
+  formAlert.textContent = '';
+}
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent default page reload/navigation
+
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
+
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const message = messageInput.value.trim();
+
+  // --- Required field checks ---
+  if (!name || !email || !message) {
+    showFormAlert('Please fill in all fields before submitting.', 'error');
+    return;
+  }
+
+  // --- Email format check ---
+  if (!EMAIL_REGEX.test(email)) {
+    showFormAlert('Please enter a valid email address.', 'error');
+    return;
+  }
+
+  // --- All checks passed ---
+  showFormAlert('Your message has been sent successfully!', 'success');
+  contactForm.reset();
+});
+
