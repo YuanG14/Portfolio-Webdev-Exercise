@@ -148,7 +148,7 @@ const contactForm = document.getElementById('contactForm');
 const formAlert = document.getElementById('formAlert');
 
 // Simple, standard-enough email pattern for client-side checks
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
 
 /**
  * Displays a message in the form alert box.
