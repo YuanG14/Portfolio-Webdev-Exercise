@@ -24,6 +24,7 @@ navToggleBtn.addEventListener('click', () => {
   navToggleBtn.setAttribute('aria-expanded', String(!isOpen));
 });
 
+
 // ==============================
 // Project Modal Open/Close
 // ==============================
@@ -82,6 +83,7 @@ document.addEventListener('keydown', (e) => {
     });
   }
 });
+
 
 // ==============================
 // Contact Form Validation
@@ -142,4 +144,3 @@ contactForm.addEventListener('submit', (e) => {
   showFormAlert('Your message has been sent successfully!', 'success');
   contactForm.reset();
 });
-
