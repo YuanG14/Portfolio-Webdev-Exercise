@@ -197,6 +197,7 @@ contactForm.addEventListener('submit', (e) => {
 
   // --- All checks passed ---
   showFormAlert('Your message has been sent successfully!', 'success');
+  alert('Your message has been sent successfully!'); // literal browser alert, as required by assignment spec
   contactForm.reset();
 });
 
