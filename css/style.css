@@ -13,10 +13,18 @@
    Elements with .reveal start hidden/offset,
    then fade + slide in via .visible (added by JS
    IntersectionObserver in main.js).
+
+   In plain terms: "start invisible and pushed down a bit"
+   → "become fully visible and slide up to normal position."
+   The transition below is what makes that change smooth
+   instead of an instant jump.
    ============================== */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
+  /* !important makes sure this wins over Tailwind's own transition
+     classes on the same card (like transition-shadow), which would
+     otherwise silently cancel this animation out. */
   transition: opacity 0.6s ease, transform 0.6s ease !important; 
 }
 
@@ -34,6 +42,9 @@
    Portfolio Card Hover Lift
    Adds a subtle lift + scale on hover,
    layered on top of Tailwind's shadow transition.
+
+   In plain terms: when your mouse is over a card,
+   it moves up slightly and grows a tiny bit bigger.
    ============================== */
 .portfolio-card {
   transition: transform 0.3s ease !important;
@@ -47,6 +58,10 @@
    Button Micro-Interactions
    Slight scale on hover, slight press-down
    on click for tactile feedback.
+
+   In plain terms: buttons grow a little when you hover
+   over them, and shrink a little when you click — gives
+   a satisfying "press" feeling, like a real button.
    ============================== */
 .btn-interactive {
   transition: transform 0.15s ease !important;
