@@ -116,12 +116,12 @@ projectCardBtns.forEach((btn) => {
   });
 });
 
-// Close modal via close button (X) or backdrop click
+// Close modal via close button (X or bottom "Close" button) or backdrop click
 projectModals.forEach((modal) => {
-  const closeBtn = modal.querySelector('.modal-close-btn');
+  const closeBtns = modal.querySelectorAll('.modal-close-btn'); // now 2 per modal: top X icon + bottom Close button
   const backdrop = modal.querySelector('.modal-backdrop');
 
-  closeBtn.addEventListener('click', () => closeModal(modal));
+  closeBtns.forEach((btn) => btn.addEventListener('click', () => closeModal(modal)));
   backdrop.addEventListener('click', () => closeModal(modal));
 
   // Keep Tab navigation trapped inside this modal while it's open
