@@ -152,8 +152,7 @@ const formAlert = document.getElementById('formAlert');
 
 // Checks if the email format is valid
 const EMAIL_REGEX =
-  /^[a-zA-Z0-9.!#$%'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)*\\.[a-zA-Z]{2,}$/;
-
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
 /**
  * Displays a message on the form.
  * @param {string} message
@@ -209,7 +208,7 @@ contactForm.addEventListener('submit', (e) => {
 
   // Show success message
   showFormAlert('Your message has been sent successfully!', 'success');
-  alert('Your message has been sent successfully!');
+alert('Your message has been sent successfully!'); // Shows a browser alert.
   contactForm.reset();
 });
 
