@@ -1,31 +1,20 @@
 /* ==============================
    Custom CSS
-   Tailwind handles most styling.
-   This file is for things Tailwind
-   can't do cleanly (custom animations,
-   keyframes, fine-tuned overrides, etc.)
+   Adds custom styles and animations.
    ============================== */
 
-/* Intentionally empty for now — will be populated in Phase 9 */
+/* Additional styles can be added here. */
 
 /* ==============================
-   Scroll Reveal Animation
-   Elements with .reveal start hidden/offset,
-   then fade + slide in via .visible (added by JS
-   IntersectionObserver in main.js).
-
-   In plain terms: "start invisible and pushed down a bit"
-   → "become fully visible and slide up to normal position."
-   The transition below is what makes that change smooth
-   instead of an instant jump.
+   Scroll Animation
+   Makes elements fade in when they appear.
    ============================== */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  /* !important makes sure this wins over Tailwind's own transition
-     classes on the same card (like transition-shadow), which would
-     otherwise silently cancel this animation out. */
-  transition: opacity 0.6s ease, transform 0.6s ease !important; 
+
+  /* Keeps this animation working correctly. */
+  transition: opacity 0.6s ease, transform 0.6s ease !important;
 }
 
 .reveal.visible {
@@ -33,18 +22,22 @@
   transform: translateY(0);
 }
 
-/* Stagger card reveal timing so they animate in sequence, not all at once */
-.reveal:nth-child(1) { transition-delay: 0s; }
-.reveal:nth-child(2) { transition-delay: 0.15s; }
-.reveal:nth-child(3) { transition-delay: 0.3s; }
+/* Delays each card animation. */
+.reveal:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.reveal:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.reveal:nth-child(3) {
+  transition-delay: 0.3s;
+}
 
 /* ==============================
-   Portfolio Card Hover Lift
-   Adds a subtle lift + scale on hover,
-   layered on top of Tailwind's shadow transition.
-
-   In plain terms: when your mouse is over a card,
-   it moves up slightly and grows a tiny bit bigger.
+   Portfolio Cards
+   Adds a hover animation to each card.
    ============================== */
 .portfolio-card {
   transition: transform 0.3s ease !important;
@@ -55,13 +48,8 @@
 }
 
 /* ==============================
-   Button Micro-Interactions
-   Slight scale on hover, slight press-down
-   on click for tactile feedback.
-
-   In plain terms: buttons grow a little when you hover
-   over them, and shrink a little when you click — gives
-   a satisfying "press" feeling, like a real button.
+   Button Animation
+   Adds hover and click effects.
    ============================== */
 .btn-interactive {
   transition: transform 0.15s ease !important;

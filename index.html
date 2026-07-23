@@ -6,10 +6,10 @@
   <title>My Portfolio</title>
   <meta name="description" content="Portfolio site showcasing full-stack development projects.">
 
-  <!-- Tailwind CSS (CDN) -->
+  <!-- Loads Tailwind CSS for styling -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Custom CSS (for anything Tailwind can't handle cleanly) -->
+  <!-- Loads my custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans antialiased">
@@ -22,36 +22,31 @@
     Skip to main content
   </a>
 
-  <!-- ============================= -->
-  <!-- NAVBAR SECTION                -->
-  <!-- ============================= -->
+  <!-- Navigation Bar -->
   <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
     <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
 
-        <!-- Logo / Brand -->
+        <!-- Website Logo -->
         <div class="flex-shrink-0">
           <a href="#" class="text-xl font-bold text-indigo-600">MyPortfolio</a>
         </div>
 
-        <!-- Desktop Nav Links -->
+        <!-- Navigation links for desktop -->
         <div class="hidden md:flex space-x-8">
           <a href="#home" class="text-gray-700 hover:text-indigo-600 transition-colors">Home</a>
           <a href="#portfolio" class="text-gray-700 hover:text-indigo-600 transition-colors">Portfolio</a>
           <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition-colors">Contact</a>
         </div>
 
-        <!-- Mobile Menu Button (hamburger)
-             aria-expanded tells screen readers whether the menu is open or closed.
-             aria-controls points to the menu this button opens (id="mobileMenu").
-             JavaScript (main.js) swaps the hamburger icon for the X icon when clicked. -->
+        <!-- Mobile menu button -->
         <div class="md:hidden">
           <button id="navToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" class="text-gray-700 hover:text-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">
-            <!-- Hamburger Icon (SVG) -->
+            <!-- Menu icon -->
             <svg id="iconHamburger" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <!-- Close Icon (SVG), hidden by default -->
+            <!-- Close icon (hidden at first) -->
             <svg id="iconClose" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -61,7 +56,7 @@
       </div>
     </nav>
 
-    <!-- Mobile Nav Links (collapsed by default) -->
+    <!-- Mobile navigation menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100">
       <div class="px-4 pt-2 pb-4 space-y-1">
         <a href="#home" class="block py-2 text-gray-700 hover:text-indigo-600 transition-colors">Home</a>
@@ -71,36 +66,30 @@
     </div>
   </header>
 
-  <!-- ============================= -->
-  <!-- MAIN CONTENT PLACEHOLDER      -->
-  <!-- ============================= -->
+  <!-- Main Content -->
   <main id="mainContent" class="pt-16">
 
-    <!-- ============================= -->
-    <!-- HERO SECTION                  -->
-    <!-- ============================= -->
+    <!-- Hero Section -->
     <section id="home" class="min-h-[90vh] flex items-center bg-gradient-to-b from-indigo-50 to-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center md:text-left">
         <div class="max-w-2xl mx-auto md:mx-0">
 
-          <!-- Greeting -->
+          <!-- Introduction -->
           <p class="text-indigo-600 font-semibold mb-3 text-sm sm:text-base tracking-wide uppercase">
             Hello, I'm
           </p>
 
-          <!-- Name / Title -->
+          <!-- My Name -->
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight">
             Yuan Benedict A. Chavez
           </h1>
 
-          <!-- Tagline -->
+          <!-- Short description -->
           <p class="text-lg sm:text-xl text-gray-600 mb-8">
             A Full-Stack Developer crafting clean, responsive, and user-friendly web experiences.
           </p>
 
-          <!-- Call To Action
-               "btn-interactive" class (see style.css) makes these buttons
-               grow slightly on hover and shrink slightly when clicked. -->
+          <!-- Action buttons -->
           <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
             <a href="#portfolio"
                class="btn-interactive inline-block bg-indigo-600 text-white font-medium px-6 py-3 rounded-lg shadow hover:bg-indigo-700 transition-colors">
@@ -122,7 +111,7 @@
     <section id="portfolio" class="py-20 bg-white transition-colors duration-500">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- Section Heading -->
+        <!-- Section title -->
         <div class="text-center mb-12">
           <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">My Portfolio</h2>
           <p class="text-gray-600 max-w-xl mx-auto">
@@ -130,9 +119,7 @@
           </p>
         </div>
 
-        <!-- Project Cards Grid
-             1 column on phones, 2 on tablets, 3 on desktop —
-             Tailwind handles this automatically, no extra CSS needed. -->
+        <!-- Responsive project cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
           <!-- Card 1
@@ -153,7 +140,7 @@ Calculates a student's average, assigns a letter grade, and determines pass or f
             </div>
           </article>
 
-          <!-- Card 2 (same idea as Card 1 above, just data-project="2") -->
+          <!-- Project Card 2 -->
           <article class="reveal portfolio-card bg-gray-50 rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
             <img src="images/temperature.jpg" alt="Temperature Converter thumbnail" class="w-full h-48 object-cover" loading="lazy">
             <div class="p-6 flex flex-col flex-grow">
@@ -167,7 +154,7 @@ Instantly converts temperatures between Celsius and Fahrenheit.    </p>
             </div>
           </article>
 
-          <!-- Card 3 (same idea as Card 1 above, just data-project="3") -->
+          <!-- Project Card 3 -->
           <article class="reveal portfolio-card bg-gray-50 rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
             <img src="images/countdown.jpg" alt="Countdown Timer thumbnail" class="w-full h-48 object-cover" loading="lazy">
             <div class="p-6 flex flex-col flex-grow">
@@ -191,7 +178,7 @@ Counts down from a specified time and alerts the user when the timer ends.    </
     <section id="contact" class="py-20 bg-gray-50">
       <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- Section Heading -->
+        <!-- Section title -->
         <div class="text-center mb-12">
           <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Get In Touch</h2>
           <p class="text-gray-600">
@@ -348,7 +335,7 @@ Counts down from a specified time and alerts the user when the timer ends.    </
     </div>
   </div>
 
-  <!-- Custom JavaScript -->
+  <!-- Loads JavaScript -->
   <script src="js/main.js"></script>
 
 </body>
